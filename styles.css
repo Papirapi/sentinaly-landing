@@ -702,7 +702,7 @@ a {
   margin-top: 80px;
   margin-left: 162px;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: center;
   gap: 127px;
   flex-wrap: wrap;
@@ -714,6 +714,7 @@ a {
   align-items: center;
   gap: 17px;
   text-align: center;
+  justify-content: flex-end;
 }
 
 .badge--soc {
