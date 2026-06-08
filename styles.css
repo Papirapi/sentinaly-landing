@@ -502,23 +502,31 @@ a {
 .testimonials__row {
   margin-top: 118px;
   display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 0 120px;
 }
 
 .tcard {
   position: relative;
-  width: 430px;
-  height: 500px;
-  overflow: hidden;
+  width: 245px;
   flex-shrink: 0;
+}
+
+.tcard--mid {
+  width: 270px;
+}
+
+.tcard--last {
+  width: 245px;
+}
+
+.tcard--last .tcard__meta {
+  width: 260px;
 }
 
 .tcard--light {
   background: var(--white);
-  padding: 32px;
   display: flex;
   flex-direction: column;
 }
@@ -537,13 +545,12 @@ a {
 }
 
 .tcard__quote {
-  margin-top: auto;
-  margin-bottom: 24px;
+  margin-top: 40px;
+  margin-bottom: 40px;
   font-family: var(--font-neue);
-  font-size: 24px;
-  line-height: 26.4px;
+  font-size: 20px;
+  line-height: 24px;
   color: var(--ink);
-  max-width: 303px;
 }
 
 .tcard__meta {
@@ -690,11 +697,11 @@ a {
 
 .security__badges {
   margin-top: 80px;
-  margin-left: 162px;
+  margin-left: 349px;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  gap: 127px;
+  justify-content: flex-start;
+  gap: 118px;
   flex-wrap: wrap;
 }
 
