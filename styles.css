@@ -187,18 +187,20 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 14px;
+  line-height: 1;
 }
 
 .label__logo {
   width: 23px;
   height: 24px;
   flex-shrink: 0;
+  display: block;
 }
 
 .label span {
   font-family: var(--font-acres);
   font-size: 18px;
-  line-height: 21.6px;
+  line-height: 1;
   text-transform: uppercase;
   color: var(--ink);
 }
