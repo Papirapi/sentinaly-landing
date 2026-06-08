@@ -280,11 +280,8 @@ a {
   padding-inline: 10px;
 }
 
-.nav__link:hover {
-  opacity: 0.85;
-}
-
-.nav__link--active {
+.nav__link:hover,
+.nav__link:focus-visible {
   border-bottom-color: rgba(255, 255, 255, 0.48);
 }
 
@@ -340,36 +337,27 @@ a {
 }
 
 .hero__title {
-  font-family: var(--font-acres);
+  font-family: var(--font-neue);
   font-weight: 400;
-  text-transform: uppercase;
-  font-size: 40px;
-  line-height: 72px;
-  max-width: 1160px;
-  background: linear-gradient(201.133deg, rgb(255, 255, 255) 53.366%, rgba(255, 255, 255, 0) 151.13%);
+  text-transform: capitalize;
+  font-size: 60px;
+  line-height: 67px;
+  max-width: 1033px;
+  background: linear-gradient(208.415deg, rgb(255, 255, 255) 53.366%, rgba(255, 255, 255, 0) 151.13%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.hero__subtitle {
-  margin-top: 16px;
-  font-family: var(--font-neue);
-  font-size: 24px;
-  line-height: 1.2;
-  max-width: 796px;
-  color: var(--white);
-}
-
 .hero__content .link-button {
-  margin-top: 40px;
+  margin-top: 27px;
 }
 
 /* ===================== ABOUT ===================== */
 .about {
   background: var(--white);
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 230px;
+  padding-bottom: 230px;
 }
 
 .about__grid {
@@ -505,8 +493,8 @@ a {
 /* ===================== TESTIMONIALS ===================== */
 .testimonials {
   background: var(--white);
-  padding-top: 38px;
-  padding-bottom: 38px;
+  padding-top: 70px;
+  padding-bottom: 120px;
 }
 
 .testimonials__row {
@@ -693,7 +681,7 @@ a {
   font-family: var(--font-neue);
   font-size: 16px;
   line-height: 19.2px;
-  letter-spacing: -0.4px;
+  letter-spacing: -0.2px;
   color: var(--ink-1e);
   opacity: 0.8;
 }
@@ -702,7 +690,7 @@ a {
   margin-top: 80px;
   margin-left: 162px;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   gap: 127px;
   flex-wrap: wrap;
@@ -714,29 +702,36 @@ a {
   align-items: center;
   gap: 17px;
   text-align: center;
-  justify-content: flex-end;
 }
 
-.badge--soc {
-  width: 206px;
-}
-
+.badge--soc,
 .badge--iso,
 .badge--enc {
   width: 179px;
-}
-
-.badge__img--soc {
-  height: 102px;
-  width: 351px;
-  max-width: none;
-  object-fit: cover;
 }
 
 .badge__iso {
   position: relative;
   width: 114px;
   height: 114px;
+}
+
+/* SOC 2 seal lives in a wide source image; crop to its circular seal */
+.badge__soc {
+  position: relative;
+  z-index: 1;
+  width: 114px;
+  height: 114px;
+  overflow: hidden;
+}
+
+.badge__soc img {
+  position: absolute;
+  width: 270.27%;
+  height: 128.93%;
+  left: -85.3%;
+  top: -8.46%;
+  max-width: none;
 }
 
 .badge__ring {
