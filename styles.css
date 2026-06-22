@@ -48,6 +48,7 @@
   /* Design canvas reference: 1920px frame, 220px / 217px side padding */
   --pad-l: 220px;
   --pad-r: 217px;
+  --content-max: 1479px;
 }
 
 * {
@@ -211,8 +212,6 @@ a {
   background: var(--ink);
   color: var(--white);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
   /* Design frame is 1920 x 1200 (= 62.5% of width) */
   min-height: min(1200px, 62.5vw);
 }
@@ -242,9 +241,9 @@ a {
 }
 
 .nav__inner {
-  max-width: 1479px;
+  max-width: var(--content-max);
   margin: 0 auto;
-  padding: 27px 40px;
+  padding: 27px 0;
   height: 117px;
   display: flex;
   align-items: center;
@@ -332,16 +331,15 @@ a {
   transform: translateY(-2px);
 }
 
-/* ---------- Hero content ---------- */
+/* ---------- Hero content (Figma 860:2531 — top 635px, left 221px, gap 27px) ---------- */
 .hero__content {
-  position: relative;
+  position: absolute;
+  top: 52.917%;
+  left: max(12px, calc((100% - var(--content-max)) / 2));
+  width: min(var(--content-max), calc(100% - 24px));
   z-index: 2;
-  width: 100%;
-  max-width: 1920px;
-  margin-top: auto;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 var(--pad-l) 48px;
+  margin: 0;
+  padding: 0;
 }
 
 .hero__title {
@@ -361,11 +359,13 @@ a {
   margin-top: 27px;
 }
 
-/* ---------- Backed By partners bar (Figma 778:4046 — transparent over hero) ---------- */
+/* ---------- Backed By partners bar (Figma 860:2542 — top 1065px) ---------- */
 .hero__backed {
-  position: relative;
+  position: absolute;
+  top: 88.75%;
+  left: 0;
+  right: 0;
   z-index: 2;
-  margin-top: auto;
   width: 100%;
   padding: 29px 12px;
   min-height: 130px;
@@ -770,7 +770,7 @@ a {
 .security {
   background: var(--white);
   padding-top: 38px;
-  padding-bottom: 38px;
+  padding-bottom: 120px;
 }
 
 .security__features {
@@ -1334,14 +1334,27 @@ a {
     height: auto;
     flex-wrap: wrap;
   }
-  .hero__content {
+  .hero {
+    min-height: auto;
     padding-bottom: 48px;
+  }
+  .hero__content {
+    position: relative;
+    top: auto;
+    padding: 32px 20px 24px;
+  }
+  .hero__backed {
+    position: relative;
+    top: auto;
   }
   .about,
   .testimonials,
   .security {
     padding-top: 56px;
     padding-bottom: 56px;
+  }
+  .security {
+    padding-bottom: 88px;
   }
   .footer__inner {
     padding: 48px 20px 32px;
