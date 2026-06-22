@@ -27,12 +27,17 @@
         <a class="nav__brand" href="#top" aria-label="Sentinaly home">
           <img src="assets/wordmark-nav.svg" alt="SENTINALY" />
         </a>
-        <nav class="nav__menu" aria-label="Primary">
+        <nav class="nav__menu" id="primary-nav" aria-label="Primary">
           <a href="#about" class="nav__link nav__link--active">About Us</a>
           <a href="#os" class="nav__link">The Sentinaly OS™</a>
           <a href="#testimonials" class="nav__link">Testimonials</a>
           <a href="#security" class="nav__link">Security &amp; Trust</a>
         </nav>
+        <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+          <span class="nav__toggle-bar" aria-hidden="true"></span>
+        </button>
         <div class="nav__cta">
           <a href="#" class="btn btn--ghost">Sign In</a>
           <a href="book-a-demo.html" class="btn btn--white">Book a Demo</a>
@@ -280,6 +285,35 @@
   </footer>
 
   <script>
+    // Mobile nav toggle
+    (function () {
+      var toggle = document.querySelector('.nav__toggle');
+      var menu = document.getElementById('primary-nav');
+      if (!toggle || !menu) return;
+
+      var closeMenu = function () {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        document.body.classList.remove('nav-open');
+      };
+
+      toggle.addEventListener('click', function () {
+        var open = menu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        document.body.classList.toggle('nav-open', open);
+      });
+
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      window.addEventListener('resize', function () {
+        if (window.innerWidth > 1000) closeMenu();
+      });
+    })();
+
     // Clean anchor navigation — scroll to section without showing # in URL
     (function () {
       document.querySelectorAll('a[href^="#"]').forEach(function (link) {
