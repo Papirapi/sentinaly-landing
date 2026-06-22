@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Demo — SENTINALY</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="demo.css" />
+</head>
+<body class="demo-page">
+  <main class="demo">
+    <header class="demo__header">
+      <a href="index.html" aria-label="Sentinaly home">
+        <img class="demo__logo" src="assets/demo-logo.png" alt="SENTINALY" />
+      </a>
+      <h1 class="demo__title">Submit the form and we'll be in touch shortly.</h1>
+    </header>
+
+    <div class="demo__card">
+      <form class="demo-form" action="#" method="post" novalidate>
+        <div class="demo-form__fields">
+          <div class="demo-form__group">
+            <div class="demo-form__row">
+              <div class="demo-field demo-field--half">
+                <label class="demo-field__label" for="firstName">First Name*</label>
+                <input class="demo-input" id="firstName" name="firstName" type="text" placeholder="first name" required />
+              </div>
+              <div class="demo-field demo-field--half">
+                <label class="demo-field__label" for="lastName">Last Name*</label>
+                <input class="demo-input" id="lastName" name="lastName" type="text" placeholder="last name" required />
+              </div>
+            </div>
+
+            <div class="demo-field demo-field--full">
+              <label class="demo-field__label" for="organizationName">Organization Name*</label>
+              <input class="demo-input" id="organizationName" name="organizationName" type="text" placeholder="organization name" required />
+            </div>
+
+            <div class="demo-form__row">
+              <div class="demo-field demo-field--half">
+                <label class="demo-field__label" id="orgTypeLabel">Organization Type*</label>
+                <div class="demo-select" data-placeholder="select type">
+                  <button type="button" class="demo-select__trigger" aria-labelledby="orgTypeLabel" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="demo-select__value is-placeholder">select type</span>
+                    <img class="demo-select__chevron" src="assets/chevron-down.svg" alt="" />
+                  </button>
+                  <div class="demo-select__panel" role="listbox" aria-labelledby="orgTypeLabel">
+                    <ul class="demo-select__list">
+                      <li><button type="button" class="demo-select__option" role="option">Industry association</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Startup</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Large multinational</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Consultancy / advisory organization</button></li>
+                    </ul>
+                  </div>
+                  <input type="hidden" name="organizationType" required />
+                </div>
+              </div>
+              <div class="demo-field demo-field--half">
+                <label class="demo-field__label" id="orgSizeLabel">Organization Size*</label>
+                <div class="demo-select" data-placeholder="select size">
+                  <button type="button" class="demo-select__trigger" aria-labelledby="orgSizeLabel" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="demo-select__value is-placeholder">select size</span>
+                    <img class="demo-select__chevron" src="assets/chevron-down.svg" alt="" />
+                  </button>
+                  <div class="demo-select__panel" role="listbox" aria-labelledby="orgSizeLabel">
+                    <ul class="demo-select__list">
+                      <li><button type="button" class="demo-select__option" role="option">1–10 employees</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">11–50 employees</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">51–200 employees</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">201–1,000 employees</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">1,001–5,000 employees</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">5,000+ employees</button></li>
+                    </ul>
+                  </div>
+                  <input type="hidden" name="organizationSize" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="demo-form__row">
+              <div class="demo-field demo-field--half">
+                <label class="demo-field__label" id="jobTitleLabel">Job Title*</label>
+                <div class="demo-select" data-placeholder="your job title">
+                  <button type="button" class="demo-select__trigger" aria-labelledby="jobTitleLabel" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="demo-select__value is-placeholder">your job title</span>
+                    <img class="demo-select__chevron" src="assets/chevron-down.svg" alt="" />
+                  </button>
+                  <div class="demo-select__panel" role="listbox" aria-labelledby="jobTitleLabel">
+                    <ul class="demo-select__list">
+                      <li><button type="button" class="demo-select__option" role="option">Association / Policy Leader</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Regulatory Affairs Manager / Director</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">CEO / Founder</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Public or Government Affairs</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Scientific / Innovation Lead</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Other</button></li>
+                    </ul>
+                  </div>
+                  <input type="hidden" name="jobTitle" required />
+                </div>
+              </div>
+              <div class="demo-field demo-field--half">
+                <label class="demo-field__label" for="businessEmail">Business Email*</label>
+                <input class="demo-input" id="businessEmail" name="businessEmail" type="email" placeholder="mail@organization.com" required />
+              </div>
+            </div>
+
+            <div class="demo-form__row">
+              <div class="demo-field demo-field--half">
+                <label class="demo-field__label" for="phone">Phone Number*</label>
+                <input class="demo-input" id="phone" name="phone" type="tel" placeholder="phone number" required />
+              </div>
+              <div class="demo-field demo-field--half">
+                <label class="demo-field__label" id="countryLabel">Country*</label>
+                <div class="demo-select" data-placeholder="your country">
+                  <button type="button" class="demo-select__trigger" aria-labelledby="countryLabel" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="demo-select__value is-placeholder">your country</span>
+                    <img class="demo-select__chevron" src="assets/chevron-down.svg" alt="" />
+                  </button>
+                  <div class="demo-select__panel" role="listbox" aria-labelledby="countryLabel">
+                    <ul class="demo-select__list">
+                      <li><button type="button" class="demo-select__option" role="option">United Arab Emirates</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">United States</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">United Kingdom</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">France</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Germany</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Switzerland</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Saudi Arabia</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">India</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Singapore</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Canada</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Australia</button></li>
+                      <li><button type="button" class="demo-select__option" role="option">Other</button></li>
+                    </ul>
+                  </div>
+                  <input type="hidden" name="country" required />
+                </div>
+              </div>
+            </div>
+
+            <div class="demo-field demo-field--full">
+              <label class="demo-field__label demo-field__label--cap" for="referral">How did you hear about us?*</label>
+              <textarea class="demo-textarea" id="referral" name="referral" required></textarea>
+            </div>
+          </div>
+
+          <div class="demo-checks">
+            <label class="demo-check">
+              <input type="checkbox" name="newsletter" />
+              <span>Keep me updated with news and feature updates</span>
+            </label>
+            <label class="demo-check">
+              <input type="checkbox" name="terms" required />
+              <span>By Signing Up you accept the <strong>Terms &amp; Conditions</strong></span>
+            </label>
+          </div>
+        </div>
+
+        <button class="demo-submit" type="submit">Submit Form</button>
+      </form>
+    </div>
+
+    <footer class="demo__footer">
+      <img class="demo__footer-wordmark" src="assets/demo-wordmark-footer.svg" alt="SENTINALY" />
+      <span class="demo__footer-copy">© 2026</span>
+    </footer>
+  </main>
+
+  <script src="demo.js"></script>
+</body>
+</html>

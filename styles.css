@@ -252,9 +252,15 @@ a {
   gap: 24px;
 }
 
+.nav__brand {
+  flex-shrink: 0;
+  line-height: 0;
+}
+
 .nav__brand img {
-  height: 31px;
-  width: auto;
+  display: block;
+  width: 182.696px;
+  height: 23.088px;
 }
 
 .nav__menu {
@@ -264,9 +270,9 @@ a {
 }
 
 .nav__link {
-  font-family: var(--font-geist);
+  font-family: var(--font-neue);
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.2;
   letter-spacing: -0.32px;
   color: var(--white);
@@ -335,7 +341,7 @@ a {
   margin-top: auto;
   margin-left: auto;
   margin-right: auto;
-  padding: 0 var(--pad-l) 121px;
+  padding: 0 var(--pad-l) 48px;
 }
 
 .hero__title {
@@ -353,6 +359,116 @@ a {
 
 .hero__content .link-button {
   margin-top: 27px;
+}
+
+/* ---------- Backed By partners bar (Figma 778:4046 — transparent over hero) ---------- */
+.hero__backed {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  width: 100%;
+  padding: 29px 12px;
+  min-height: 130px;
+  background: transparent;
+}
+
+.hero__backed-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+}
+
+.hero__backed-label {
+  flex-shrink: 0;
+  width: 147px;
+  height: 30px;
+  margin: 0;
+  font-family: var(--font-geist);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24.96px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.hero__partners {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 71px;
+  width: 1321px;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+
+.hero__partner-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.hero__partner-slot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero__partner-slot--google {
+  width: 122px;
+  height: 40px;
+  padding: 0;
+}
+
+.hero__partner-slot--github {
+  width: 153px;
+  height: 52px;
+}
+
+.hero__partner-slot--github img {
+  object-position: center bottom;
+}
+
+.hero__partner-slot--azure {
+  width: 159px;
+  height: 52px;
+}
+
+.hero__partner-slot--bachi {
+  width: 150px;
+  height: 52px;
+}
+
+.hero__partner-slot--bachi img {
+  width: 124px;
+  height: 39px;
+}
+
+.hero__partner-slot--difc {
+  width: 189px;
+  height: 52px;
+  padding: 0;
+}
+
+.hero__partner-slot--difc img {
+  object-fit: contain;
+}
+
+.hero__partner-slot--aws {
+  width: 78px;
+  height: 52px;
+}
+
+.hero__partner-slot--aws img {
+  width: 56px;
+  height: 36px;
+  object-position: center bottom;
 }
 
 /* ===================== ABOUT ===================== */
@@ -397,6 +513,10 @@ a {
   font-size: 18px;
   line-height: 27px;
   color: var(--ink-70);
+}
+
+.about__brand {
+  text-transform: uppercase;
 }
 
 /* ===================== THE SENTINALY OS ===================== */
@@ -495,47 +615,42 @@ a {
 /* ===================== TESTIMONIALS ===================== */
 .testimonials {
   background: var(--white);
-  padding-top: 70px;
-  padding-bottom: 120px;
+  padding-top: 38px;
+  padding-bottom: 38px;
+  min-height: 884px;
+  display: flex;
+  align-items: center;
+}
+
+.testimonials .container {
+  width: 100%;
 }
 
 .testimonials__row {
   margin-top: 118px;
+  margin-left: 75px;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  padding: 0 120px;
+  align-items: stretch;
+  gap: 20px;
 }
 
 .tcard {
   position: relative;
-  width: 245px;
-  flex-shrink: 0;
-}
-
-.tcard--mid {
-  width: 270px;
-}
-
-.tcard--last {
-  width: 245px;
-}
-
-.tcard--last .tcard__meta {
-  width: 260px;
-}
-
-.tcard--light {
+  width: 430px;
+  min-height: 500px;
+  flex: 0 0 430px;
   background: var(--white);
   display: flex;
   flex-direction: column;
+  padding: 32px;
 }
 
 .tcard__avatar {
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   border-radius: 100px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .tcard__avatar img {
@@ -545,15 +660,17 @@ a {
 }
 
 .tcard__quote {
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 53px;
+  margin-bottom: auto;
   font-family: var(--font-neue);
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 24px;
+  line-height: 26.4px;
   color: var(--ink);
+  max-width: 366px;
 }
 
 .tcard__meta {
+  margin-top: 40px;
   padding-left: 20px;
   border-left: 1px solid var(--ink);
   font-family: var(--font-neue);
@@ -701,7 +818,7 @@ a {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 118px;
+  gap: 127px;
   flex-wrap: wrap;
 }
 
@@ -1087,6 +1204,7 @@ a {
   .testimonials__row {
     margin-left: 0;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
@@ -1129,6 +1247,27 @@ a {
   }
   .hero__subtitle {
     font-size: 20px;
+  }
+  .hero__backed {
+    padding: 24px 12px;
+  }
+  .hero__backed-inner {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .hero__backed-label {
+    width: auto;
+    height: auto;
+    text-align: center;
+  }
+  .hero__partners {
+    width: 100%;
+    gap: 32px 40px;
+    flex-wrap: wrap;
+  }
+  .hero__partner-slot--google,
+  .hero__partner-slot--difc {
+    padding: 0;
   }
   /* Disable pinned scroll-jacking + the 3D wheel on small screens */
   .os-scroll {
@@ -1207,9 +1346,24 @@ a {
   .footer__inner {
     padding: 48px 20px 32px;
   }
+  .testimonials {
+    min-height: auto;
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+  .testimonials__row {
+    margin-top: 48px;
+    margin-left: 0;
+  }
   .tcard {
+    flex: 1 1 100%;
     width: 100%;
     max-width: 430px;
+    min-height: auto;
+  }
+  .tcard__quote {
+    font-size: 20px;
+    line-height: 1.2;
   }
   .security__badges {
     gap: 48px;
