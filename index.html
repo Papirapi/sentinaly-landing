@@ -285,7 +285,7 @@
           <img class="footer__wordmark" src="assets/wordmark-footer.svg" alt="SENTINALY" />
           <span>© 2026</span>
         </div>
-        <span class="footer__powered">Powered by Bazillion group.</span>
+        <span class="footer__powered">Powered by<br />Kanology Technologies</span>
       </div>
     </div>
   </footer>
@@ -311,34 +311,97 @@
       motionMq.addEventListener('change', syncMarquee);
     })();
 
-    // Testimonials carousel (tablet / mobile)
+    // Testimonials — scrollable infinite carousel (tablet / mobile)
     (function () {
+      var marquee = document.querySelector('.testimonials__marquee');
       var track = document.querySelector('.testimonials__track');
-      var row = track && track.querySelector('.testimonials__row');
-      if (!track || !row) return;
+      var row = track && track.querySelector('.testimonials__row:not([aria-hidden="true"])');
+      if (!marquee || !track || !row) return;
 
       var tabletMq = window.matchMedia('(max-width: 1280px)');
-      var motionMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+      var clone = null;
+      var loopWidth = 0;
+      var isResetting = false;
 
-      var syncMarquee = function () {
-        var clone = track.querySelector('.testimonials__row[aria-hidden="true"]');
+      var measureLoop = function () {
+        loopWidth = clone ? clone.offsetLeft : row.getBoundingClientRect().width;
+      };
 
-        if (tabletMq.matches) {
-          if (!clone) {
-            clone = row.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true');
-            track.appendChild(clone);
-          }
-          track.classList.toggle('is-animated', !motionMq.matches);
-        } else {
-          if (clone) clone.remove();
-          track.classList.remove('is-animated');
+      var setScrollInstant = function (value) {
+        marquee.style.scrollBehavior = 'auto';
+        marquee.scrollLeft = value;
+        requestAnimationFrame(function () {
+          marquee.style.scrollBehavior = '';
+        });
+      };
+
+      var resetScroll = function () {
+        if (!loopWidth) return;
+        var sl = marquee.scrollLeft;
+        var maxScroll = marquee.scrollWidth - marquee.clientWidth;
+        var endThreshold = Math.max(24, marquee.clientWidth * 0.06);
+
+        if (sl >= maxScroll - endThreshold) {
+          isResetting = true;
+          setScrollInstant(loopWidth + Math.max(0, sl - maxScroll));
+          isResetting = false;
+        } else if (sl <= 0) {
+          isResetting = true;
+          setScrollInstant(loopWidth + sl);
+          isResetting = false;
         }
       };
 
-      syncMarquee();
-      tabletMq.addEventListener('change', syncMarquee);
-      motionMq.addEventListener('change', syncMarquee);
+      var onScroll = function () {
+        if (isResetting || !tabletMq.matches || !loopWidth) return;
+        resetScroll();
+      };
+
+      var enableCarousel = function () {
+        if (!clone) {
+          clone = row.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          track.appendChild(clone);
+        }
+        marquee.classList.add('is-carousel');
+        measureLoop();
+        isResetting = true;
+        setScrollInstant(loopWidth);
+        isResetting = false;
+      };
+
+      var disableCarousel = function () {
+        if (clone) {
+          clone.remove();
+          clone = null;
+        }
+        loopWidth = 0;
+        marquee.classList.remove('is-carousel');
+        isResetting = true;
+        setScrollInstant(0);
+        isResetting = false;
+      };
+
+      var syncCarousel = function () {
+        if (tabletMq.matches) {
+          enableCarousel();
+        } else {
+          disableCarousel();
+        }
+      };
+
+      syncCarousel();
+      tabletMq.addEventListener('change', syncCarousel);
+      window.addEventListener('resize', function () {
+        if (!tabletMq.matches) return;
+        measureLoop();
+        if (marquee.scrollLeft < loopWidth) {
+          isResetting = true;
+          setScrollInstant(loopWidth);
+          isResetting = false;
+        }
+      });
+      marquee.addEventListener('scroll', onScroll, { passive: true });
     })();
 
     // Mobile nav toggle
