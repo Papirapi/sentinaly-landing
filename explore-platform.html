@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Explore Platform — SENTINALY</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="description" content="Explore the Sentinaly platform — six modules for intelligent regulatory execution." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Archivo:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="explore-platform.css" />
+</head>
+<body class="explore-page">
+  <header class="nav explore-nav">
+    <div class="nav__inner explore-nav__inner">
+      <a class="nav__brand" href="index.html" aria-label="Sentinaly home">
+        <img src="assets/wordmark-nav.svg" alt="SENTINALY" />
+      </a>
+      <nav class="nav__menu" id="primary-nav" aria-label="Primary">
+        <a href="index.html#about" class="nav__link">About Us</a>
+        <a href="index.html#os" class="nav__link">The Sentinaly OS™</a>
+        <a href="index.html#testimonials" class="nav__link">Testimonials</a>
+        <a href="index.html#security" class="nav__link">Security &amp; Trust</a>
+      </nav>
+      <div class="nav__cta">
+        <a href="#" class="btn btn--ghost explore-btn--ghost">Sign In</a>
+        <a href="book-a-demo.html" class="btn btn--dark">Book a Demo</a>
+      </div>
+      <button class="nav__toggle explore-nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+        <img class="nav__toggle-icon" src="assets/icon-menu.svg" alt="" width="24" height="24" />
+      </button>
+    </div>
+  </header>
+
+  <main class="explore">
+    <section class="explore-hero">
+      <div class="explore-hero__inner">
+        <div class="explore-hero__left">
+          <div class="explore-hero__label">
+            <img src="assets/logo.svg" alt="" width="23" height="24" />
+            <span>Explore Platform</span>
+          </div>
+          <h1 class="explore-hero__title">The Architecture of Intelligent Execution.</h1>
+        </div>
+        <div class="explore-hero__right">
+          <p>Model legal possibilities before they materialize, pressure-test decisions across every clause, precedent, and risk scenario, unlock institutional knowledge instantly, and transform complex matters into precise, execution-ready outcomes.</p>
+          <p>A unified legal intelligence system designed to help teams think with greater clarity, move with greater confidence, and execute with greater precision at every stage of legal analysis, review, and decision-making.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="explore-showcase" aria-label="Platform modules">
+      <div class="explore-showcase__inner">
+        <div class="explore-showcase__screens">
+          <figure class="explore-screen" id="module-simulator">
+            <img src="assets/explore/module-simulator.png" alt="The Simulator module interface" width="1030" height="772" loading="eager" />
+          </figure>
+          <figure class="explore-screen" id="module-vault">
+            <img src="assets/explore/module-vault.png" alt="The Vault module interface" width="1030" height="772" loading="lazy" />
+          </figure>
+          <figure class="explore-screen" id="module-drafter">
+            <img src="assets/explore/module-drafter.png" alt="The Drafter module interface" width="1030" height="772" loading="lazy" />
+          </figure>
+          <figure class="explore-screen" id="module-oracle">
+            <img src="assets/explore/module-oracle.png" alt="The Oracle module interface" width="1030" height="772" loading="lazy" />
+          </figure>
+          <figure class="explore-screen" id="module-reviewer">
+            <img src="assets/explore/module-reviewer.png" alt="The Reviewer module interface" width="1030" height="772" loading="lazy" />
+          </figure>
+          <figure class="explore-screen" id="module-pulse">
+            <img src="assets/explore/module-pulse.png" alt="The Pulse module interface" width="1030" height="772" loading="lazy" />
+          </figure>
+        </div>
+
+        <aside class="explore-sidebar" aria-label="Module navigation">
+          <div class="explore-sidebar__list" role="tablist">
+            <button type="button" class="explore-module is-active" role="tab" aria-selected="true" aria-controls="module-simulator" data-target="module-simulator">
+              <span class="explore-module__title">The Simulator</span>
+              <span class="explore-module__desc">Explore possibilities before they become realities. Model decisions, test assumptions, challenge strategies, and understand downstream impacts across any scenario.</span>
+            </button>
+            <button type="button" class="explore-module" role="tab" aria-selected="false" aria-controls="module-vault" data-target="module-vault">
+              <span class="explore-module__title">The Vault</span>
+              <span class="explore-module__desc">Secure, searchable institutional knowledge — every precedent, filing, and regulatory artifact in one governed repository.</span>
+            </button>
+            <button type="button" class="explore-module" role="tab" aria-selected="false" aria-controls="module-drafter" data-target="module-drafter">
+              <span class="explore-module__title">The Drafter</span>
+              <span class="explore-module__desc">Transform briefs, bullet points, or partial inputs into precise, execution-ready drafts with agentic assistance.</span>
+            </button>
+            <button type="button" class="explore-module" role="tab" aria-selected="false" aria-controls="module-oracle" data-target="module-oracle">
+              <span class="explore-module__title">The Oracle</span>
+              <span class="explore-module__desc">Simulate outcomes, pressure-test strategies, and anticipate regulatory shifts before they become realities.</span>
+            </button>
+            <button type="button" class="explore-module" role="tab" aria-selected="false" aria-controls="module-reviewer" data-target="module-reviewer">
+              <span class="explore-module__title">The Reviewer</span>
+              <span class="explore-module__desc">Deep document analysis with highlighted risk, compliance gaps, and AI-assisted review workflows.</span>
+            </button>
+            <button type="button" class="explore-module" role="tab" aria-selected="false" aria-controls="module-pulse" data-target="module-pulse">
+              <span class="explore-module__title">The Pulse</span>
+              <span class="explore-module__desc">Real-time regulatory intelligence — curated news, audio briefings, and policy signals delivered to your team.</span>
+            </button>
+          </div>
+          <a href="book-a-demo.html" class="explore-sidebar__cta">Get started</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__bg">
+      <img src="assets/footer-bg.png" alt="" />
+    </div>
+    <div class="footer__inner">
+      <div class="footer__head">
+        <span class="footer__eyebrow">Get started</span>
+        <h2 class="footer__title">Know everything.<br />Predict everything.<br />Decide with certainty.</h2>
+      </div>
+
+      <div class="footer__signup">
+        <div class="newsletter">
+          <div class="newsletter__label">Sign up for updates</div>
+          <form class="newsletter__form" onsubmit="return false;">
+            <input class="newsletter__input" type="email" placeholder="name@email.com" aria-label="Email address" />
+            <button class="newsletter__btn" type="submit">Subscribe</button>
+          </form>
+          <p class="newsletter__terms">By subscribing you agree to our <a href="#">Privacy Policy</a> and provide consent to receive updates from Sentinaly.</p>
+        </div>
+        <a href="book-a-demo.html" class="newsletter__cta">
+          <img class="link-button__arrow" src="assets/arrow.svg" alt="" />
+          <span>Get started</span>
+        </a>
+      </div>
+
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4 class="footer__coltitle">Contact</h4>
+          <p class="footer__muted">contact@sentinaly.com</p>
+          <p class="footer__muted">Dubai international Financial Center Gate Avenue - South Zone, Unit GA-00-SZ-L1-RT-201, level 1</p>
+          <div class="footer__socials">
+            <a href="https://www.linkedin.com/company/sentinaly" target="_blank" rel="noopener noreferrer" class="footer__social" aria-label="LinkedIn">
+              <img src="assets/linkedin-dark.svg" alt="LinkedIn" />
+            </a>
+            <a href="#" class="footer__social" aria-label="X (Twitter)">
+              <img src="assets/x-logo-dark.svg" alt="X" />
+            </a>
+          </div>
+        </div>
+        <div class="footer__col footer__col--legal">
+          <h4 class="footer__coltitle">Legal</h4>
+          <ul class="footer__list">
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Data Protection</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__copy">
+          <img class="footer__wordmark" src="assets/wordmark-footer.svg" alt="SENTINALY" />
+          <span>© 2026</span>
+        </div>
+        <span class="footer__powered">Powered by<br />Kanology Technologies</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="explore-platform.js"></script>
+</body>
+</html>
