@@ -33,15 +33,13 @@
           <a href="#testimonials" class="nav__link">Testimonials</a>
           <a href="#security" class="nav__link">Security &amp; Trust</a>
         </nav>
-        <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
-          <span class="nav__toggle-bar" aria-hidden="true"></span>
-          <span class="nav__toggle-bar" aria-hidden="true"></span>
-          <span class="nav__toggle-bar" aria-hidden="true"></span>
-        </button>
         <div class="nav__cta">
           <a href="#" class="btn btn--ghost">Sign In</a>
           <a href="book-a-demo.html" class="btn btn--white">Book a Demo</a>
         </div>
+        <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+          <img class="nav__toggle-icon" src="assets/icon-menu.svg" alt="" width="24" height="24" />
+        </button>
       </div>
     </header>
 
@@ -56,25 +54,29 @@
     <div class="hero__backed">
       <div class="hero__backed-inner">
         <p class="hero__backed-label">Backed By:</p>
-        <div class="hero__partners" aria-label="Backed by partners">
-          <span class="hero__partner-slot hero__partner-slot--google">
-            <img src="assets/partner-google.png" alt="Google" />
-          </span>
-          <span class="hero__partner-slot hero__partner-slot--github">
-            <img src="assets/partner-github.png" alt="GitHub" />
-          </span>
-          <span class="hero__partner-slot hero__partner-slot--azure">
-            <img src="assets/partner-azure.png" alt="Microsoft Azure" />
-          </span>
-          <span class="hero__partner-slot hero__partner-slot--bachi">
-            <img src="assets/partner-bachi.png" alt="Bachi" />
-          </span>
-          <span class="hero__partner-slot hero__partner-slot--difc">
-            <img src="assets/partner-difc.png" alt="DIFC Innovation Hub" />
-          </span>
-          <span class="hero__partner-slot hero__partner-slot--aws">
-            <img src="assets/partner-aws.png" alt="Amazon Web Services" />
-          </span>
+        <div class="hero__partners-marquee" aria-label="Backed by partners">
+          <div class="hero__partners-track">
+            <div class="hero__partners">
+              <span class="hero__partner-slot hero__partner-slot--google">
+                <img src="assets/partner-google.png" alt="Google" />
+              </span>
+              <span class="hero__partner-slot hero__partner-slot--github">
+                <img src="assets/partner-github.png" alt="GitHub" />
+              </span>
+              <span class="hero__partner-slot hero__partner-slot--azure">
+                <img src="assets/partner-azure.png" alt="Microsoft Azure" />
+              </span>
+              <span class="hero__partner-slot hero__partner-slot--bachi">
+                <img src="assets/partner-bachi.png" alt="Bachi" />
+              </span>
+              <span class="hero__partner-slot hero__partner-slot--difc">
+                <img src="assets/partner-difc.png" alt="DIFC Innovation Hub" />
+              </span>
+              <span class="hero__partner-slot hero__partner-slot--aws">
+                <img src="assets/partner-aws.png" alt="Amazon Web Services" />
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -135,7 +137,9 @@
         <img class="label__logo" src="assets/logo.svg" alt="" />
         <span class="text-reveal">Testimonials</span>
       </div>
-      <div class="testimonials__row reveal reveal--d1">
+      <div class="testimonials__marquee reveal reveal--d1" aria-label="Testimonials">
+        <div class="testimonials__track">
+          <div class="testimonials__row">
         <article class="tcard">
           <div class="tcard__avatar">
             <img src="assets/testimonial-1-new.jpg" alt="" />
@@ -165,6 +169,8 @@
             <span>Senior Lobbyist, International Pharma Association</span>
           </div>
         </article>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -285,6 +291,56 @@
   </footer>
 
   <script>
+    // Infinite partner logo marquee
+    (function () {
+      var track = document.querySelector('.hero__partners-track');
+      var row = track && track.querySelector('.hero__partners:not([aria-hidden="true"])');
+      if (!track || !row) return;
+
+      var motionMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      var clone = row.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+
+      var syncMarquee = function () {
+        track.classList.toggle('is-animated', !motionMq.matches);
+      };
+
+      syncMarquee();
+      motionMq.addEventListener('change', syncMarquee);
+    })();
+
+    // Testimonials carousel (tablet / mobile)
+    (function () {
+      var track = document.querySelector('.testimonials__track');
+      var row = track && track.querySelector('.testimonials__row');
+      if (!track || !row) return;
+
+      var tabletMq = window.matchMedia('(max-width: 1280px)');
+      var motionMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      var syncMarquee = function () {
+        var clone = track.querySelector('.testimonials__row[aria-hidden="true"]');
+
+        if (tabletMq.matches) {
+          if (!clone) {
+            clone = row.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            track.appendChild(clone);
+          }
+          track.classList.toggle('is-animated', !motionMq.matches);
+        } else {
+          if (clone) clone.remove();
+          track.classList.remove('is-animated');
+        }
+      };
+
+      syncMarquee();
+      tabletMq.addEventListener('change', syncMarquee);
+      motionMq.addEventListener('change', syncMarquee);
+    })();
+
     // Mobile nav toggle
     (function () {
       var toggle = document.querySelector('.nav__toggle');
@@ -295,14 +351,19 @@
         menu.classList.remove('is-open');
         toggle.setAttribute('aria-expanded', 'false');
         toggle.setAttribute('aria-label', 'Open menu');
-        document.body.classList.remove('nav-open');
       };
 
-      toggle.addEventListener('click', function () {
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
         var open = menu.classList.toggle('is-open');
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-        document.body.classList.toggle('nav-open', open);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!menu.classList.contains('is-open')) return;
+        if (toggle.contains(e.target) || menu.contains(e.target)) return;
+        closeMenu();
       });
 
       menu.querySelectorAll('a').forEach(function (link) {
@@ -310,7 +371,7 @@
       });
 
       window.addEventListener('resize', function () {
-        if (window.innerWidth > 1000) closeMenu();
+        if (window.innerWidth > 1280) closeMenu();
       });
     })();
 
@@ -373,8 +434,20 @@
       };
 
       let ticking = false;
+      const isFlatOs = () =>
+        window.matchMedia('(max-width: 1000px), (min-width: 1001px) and (max-width: 1280px) and (orientation: landscape)').matches;
+
       const update = () => {
         ticking = false;
+        if (isFlatOs()) {
+          items.forEach((el) => {
+            el.style.transform = '';
+            el.style.opacity = '';
+            el.style.pointerEvents = '';
+          });
+          layoutFlat();
+          return;
+        }
         const distance = track.offsetHeight - window.innerHeight; // scrollable range while pinned
         if (distance > window.innerHeight * 0.5) {
           const rect = track.getBoundingClientRect();
