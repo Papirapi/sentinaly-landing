@@ -285,7 +285,7 @@
           <img class="footer__wordmark" src="assets/wordmark-footer.svg" alt="SENTINALY" />
           <span>© 2026</span>
         </div>
-        <span class="footer__powered">Powered by<br />Kanology Technologies</span>
+        <span class="footer__powered">Powered by Kanology Technologies</span>
       </div>
     </div>
   </footer>
@@ -318,7 +318,9 @@
       var row = track && track.querySelector('.testimonials__row:not([aria-hidden="true"])');
       if (!marquee || !track || !row) return;
 
-      var tabletMq = window.matchMedia('(max-width: 1280px)');
+      var carouselMq = window.matchMedia(
+        '(max-width: 1000px), (max-width: 1280px) and (orientation: portrait)'
+      );
       var clone = null;
       var loopWidth = 0;
       var isResetting = false;
@@ -353,7 +355,7 @@
       };
 
       var onScroll = function () {
-        if (isResetting || !tabletMq.matches || !loopWidth) return;
+        if (isResetting || !carouselMq.matches || !loopWidth) return;
         resetScroll();
       };
 
@@ -383,7 +385,7 @@
       };
 
       var syncCarousel = function () {
-        if (tabletMq.matches) {
+        if (carouselMq.matches) {
           enableCarousel();
         } else {
           disableCarousel();
@@ -391,9 +393,9 @@
       };
 
       syncCarousel();
-      tabletMq.addEventListener('change', syncCarousel);
+      carouselMq.addEventListener('change', syncCarousel);
       window.addEventListener('resize', function () {
-        if (!tabletMq.matches) return;
+        if (!carouselMq.matches) return;
         measureLoop();
         if (marquee.scrollLeft < loopWidth) {
           isResetting = true;
@@ -496,12 +498,27 @@
         items.forEach((el, idx) => el.classList.toggle('os__item--active', idx === best));
       };
 
+      const layoutFlatList = (activeIndex) => {
+        items.forEach((el, idx) => {
+          el.style.transform = '';
+          el.style.opacity = '';
+          el.style.pointerEvents = '';
+          el.classList.toggle('os__item--active', idx === activeIndex);
+        });
+      };
+
       let ticking = false;
-      const isFlatOs = () =>
-        window.matchMedia('(max-width: 1000px), (min-width: 1001px) and (max-width: 1280px) and (orientation: landscape)').matches;
+      let flatActiveIndex = 0;
+      const isFlatOs = () => window.matchMedia('(max-width: 1000px)').matches;
+      const isTabletLandscapeOs = () =>
+        window.matchMedia('(min-width: 1001px) and (max-width: 1280px) and (orientation: landscape)').matches;
 
       const update = () => {
         ticking = false;
+        if (isTabletLandscapeOs()) {
+          layoutFlatList(flatActiveIndex);
+          return;
+        }
         if (isFlatOs()) {
           items.forEach((el) => {
             el.style.transform = '';
@@ -525,6 +542,11 @@
       items.forEach((el, i) => {
         el.addEventListener('click', (e) => {
           e.preventDefault();
+          if (isTabletLandscapeOs()) {
+            flatActiveIndex = i;
+            layoutFlatList(i);
+            return;
+          }
           const distance = track.offsetHeight - window.innerHeight;
           if (distance <= window.innerHeight * 0.5) return;
           const ot = track.getBoundingClientRect().top + window.scrollY;
