@@ -54,8 +54,14 @@
     <section class="explore-showcase" aria-label="Platform modules">
       <div class="explore-showcase__inner">
         <div class="explore-showcase__screens">
+          <figure class="explore-screen" id="module-pulse">
+            <img src="assets/explore/module-pulse.png" alt="The Pulse module interface" width="1030" height="772" loading="eager" />
+          </figure>
+          <figure class="explore-screen" id="module-oracle">
+            <img src="assets/explore/module-oracle.png" alt="The Oracle module interface" width="1030" height="772" loading="lazy" />
+          </figure>
           <figure class="explore-screen" id="module-simulator">
-            <img src="assets/explore/module-simulator.png" alt="The Simulator module interface" width="1030" height="772" loading="eager" />
+            <img src="assets/explore/module-simulator.png" alt="The Simulator module interface" width="1030" height="772" loading="lazy" />
           </figure>
           <figure class="explore-screen" id="module-vault">
             <img src="assets/explore/module-vault.png" alt="The Vault module interface" width="1030" height="772" loading="lazy" />
@@ -63,20 +69,22 @@
           <figure class="explore-screen" id="module-drafter">
             <img src="assets/explore/module-drafter.png" alt="The Drafter module interface" width="1030" height="772" loading="lazy" />
           </figure>
-          <figure class="explore-screen" id="module-oracle">
-            <img src="assets/explore/module-oracle.png" alt="The Oracle module interface" width="1030" height="772" loading="lazy" />
-          </figure>
           <figure class="explore-screen" id="module-reviewer">
             <img src="assets/explore/module-reviewer.png" alt="The Reviewer module interface" width="1030" height="772" loading="lazy" />
-          </figure>
-          <figure class="explore-screen" id="module-pulse">
-            <img src="assets/explore/module-pulse.png" alt="The Pulse module interface" width="1030" height="772" loading="lazy" />
           </figure>
         </div>
 
         <aside class="explore-sidebar" aria-label="Module navigation">
           <div class="explore-sidebar__list" role="tablist">
-            <button type="button" class="explore-module is-active" role="tab" aria-selected="true" aria-controls="module-simulator" data-target="module-simulator">
+            <button type="button" class="explore-module is-active" role="tab" aria-selected="true" aria-controls="module-pulse" data-target="module-pulse">
+              <span class="explore-module__title">The Pulse</span>
+              <span class="explore-module__desc">Your AI intelligence briefing, voice-narrated every morning, capturing the signals that move your market, distilled through your portfolio before your first coffee.</span>
+            </button>
+            <button type="button" class="explore-module" role="tab" aria-selected="false" aria-controls="module-oracle" data-target="module-oracle">
+              <span class="explore-module__title">The Oracle</span>
+              <span class="explore-module__desc">Simulate outcomes, pressure-test strategies, and anticipate regulatory shifts before they become realities.</span>
+            </button>
+            <button type="button" class="explore-module" role="tab" aria-selected="false" aria-controls="module-simulator" data-target="module-simulator">
               <span class="explore-module__title">The Simulator</span>
               <span class="explore-module__desc">Explore possibilities before they become realities. Model decisions, test assumptions, challenge strategies, and understand downstream impacts across any scenario.</span>
             </button>
@@ -88,17 +96,9 @@
               <span class="explore-module__title">The Drafter</span>
               <span class="explore-module__desc">Transform briefs, bullet points, or partial inputs into precise, execution-ready drafts with agentic assistance.</span>
             </button>
-            <button type="button" class="explore-module" role="tab" aria-selected="false" aria-controls="module-oracle" data-target="module-oracle">
-              <span class="explore-module__title">The Oracle</span>
-              <span class="explore-module__desc">Simulate outcomes, pressure-test strategies, and anticipate regulatory shifts before they become realities.</span>
-            </button>
             <button type="button" class="explore-module" role="tab" aria-selected="false" aria-controls="module-reviewer" data-target="module-reviewer">
               <span class="explore-module__title">The Reviewer</span>
               <span class="explore-module__desc">Deep document analysis with highlighted risk, compliance gaps, and AI-assisted review workflows.</span>
-            </button>
-            <button type="button" class="explore-module" role="tab" aria-selected="false" aria-controls="module-pulse" data-target="module-pulse">
-              <span class="explore-module__title">The Pulse</span>
-              <span class="explore-module__desc">Real-time regulatory intelligence — curated news, audio briefings, and policy signals delivered to your team.</span>
             </button>
           </div>
           <a href="book-a-demo.html" class="explore-sidebar__cta">Get started</a>
