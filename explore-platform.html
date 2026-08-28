@@ -32,6 +32,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Archivo:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="explore-platform.css" />
+  <link rel="stylesheet" href="cookies.css" />
 </head>
 <body class="explore-page">
   <header class="nav explore-nav">
@@ -189,5 +190,36 @@
   </footer>
 
   <script src="explore-platform.js"></script>
+
+  <div
+    class="cookie-banner"
+    id="cookie-banner"
+    role="dialog"
+    aria-labelledby="cookie-banner-title"
+    aria-describedby="cookie-banner-desc"
+    hidden
+  >
+    <button type="button" class="cookie-banner__close" aria-label="Close cookie notice">
+      <span class="cookie-banner__close-icon">
+        <img src="assets/icon-cookie-close.svg" alt="" width="16" height="16" />
+      </span>
+    </button>
+    <div class="cookie-banner__inner">
+      <div class="cookie-banner__top">
+        <h2 class="cookie-banner__title" id="cookie-banner-title">Our website use Cookies</h2>
+        <p class="cookie-banner__desc" id="cookie-banner-desc">
+          We use cookies for analytics and marketing to improve your experience. See our
+          <a href="#" class="cookie-banner__link">Privacy Policy</a>
+        </p>
+      </div>
+      <div class="cookie-banner__divider" aria-hidden="true"></div>
+      <div class="cookie-banner__actions">
+        <button type="button" class="cookie-banner__btn cookie-banner__btn--decline">Decline</button>
+        <button type="button" class="cookie-banner__btn cookie-banner__btn--accept">Accept all</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="cookies.js"></script>
 </body>
 </html>
