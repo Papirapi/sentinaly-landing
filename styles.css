@@ -1253,6 +1253,10 @@ a {
   object-fit: contain;
 }
 
+.footer__social--inactive {
+  cursor: default;
+}
+
 .footer__list {
   list-style: none;
   display: flex;
@@ -1271,7 +1275,6 @@ a {
 .footer__list a:hover {
   color: var(--ink);
 }
-
 /* Footer bottom bar */
 .footer__bottom {
   margin-top: 56px;

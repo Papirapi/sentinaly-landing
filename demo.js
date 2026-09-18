@@ -75,9 +75,49 @@
   document.addEventListener('click', () => closeAll());
 
   const form = document.querySelector('.demo-form');
+  const success = document.querySelector('.demo-success');
   if (form) {
+    const wrapperOf = (el) => el.closest('.demo-field, .demo-check');
+
+    const validate = () => {
+      let firstInvalid = null;
+      form.querySelectorAll('[required]').forEach((el) => {
+        const wrapper = wrapperOf(el);
+        // Hidden inputs (custom selects) are skipped by native validation.
+        const valid = el.type === 'hidden' ? el.value.trim() !== '' : el.validity.valid;
+        if (wrapper) wrapper.classList.toggle('is-invalid', !valid);
+        if (!valid && !firstInvalid) firstInvalid = el;
+      });
+      return firstInvalid;
+    };
+
+    form.addEventListener('input', (e) => {
+      const wrapper = wrapperOf(e.target);
+      if (wrapper) wrapper.classList.remove('is-invalid');
+    });
+    form.addEventListener('change', (e) => {
+      const wrapper = wrapperOf(e.target);
+      if (wrapper) wrapper.classList.remove('is-invalid');
+    });
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
+      const firstInvalid = validate();
+      if (firstInvalid) {
+        const target = firstInvalid.type === 'hidden'
+          ? firstInvalid.closest('.demo-select').querySelector('.demo-select__trigger')
+          : firstInvalid;
+        target.focus();
+        target.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        return;
+      }
+
+      // TODO: send FormData(form) to the backend / form service here.
+      form.hidden = true;
+      if (success) {
+        success.hidden = false;
+        success.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      }
     });
   }
 })();

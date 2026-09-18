@@ -176,13 +176,25 @@
             </label>
             <label class="demo-check">
               <input type="checkbox" name="terms" required />
-              <span>By Signing Up you accept the <strong>Terms &amp; Conditions</strong></span>
+              <span>By Signing Up you accept the <a href="terms.html" target="_blank" rel="noopener"><strong>Terms &amp; Conditions</strong></a></span>
             </label>
           </div>
         </div>
 
         <button class="demo-submit" type="submit">Submit Form</button>
       </form>
+
+      <div class="demo-success" role="status" aria-live="polite" hidden>
+        <span class="demo-success__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="13" stroke="currentColor" stroke-width="1.5" />
+            <path d="M8.5 14.2l3.6 3.6 7.4-7.6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </span>
+        <h2 class="demo-success__title">Your form has been submitted successfully.</h2>
+        <p class="demo-success__text">Our team will review your request and get back to you shortly.</p>
+        <a class="demo-success__link" href="index.html">Back to home</a>
+      </div>
     </div>
 
     <footer class="demo__footer">
@@ -211,7 +223,7 @@
         <h2 class="cookie-banner__title" id="cookie-banner-title">Our website use Cookies</h2>
         <p class="cookie-banner__desc" id="cookie-banner-desc">
           We use cookies for analytics and marketing to improve your experience. See our
-          <a href="#" class="cookie-banner__link">Privacy Policy</a>
+          <a href="privacy.html" class="cookie-banner__link">Privacy Policy</a>
         </p>
       </div>
       <div class="cookie-banner__divider" aria-hidden="true"></div>

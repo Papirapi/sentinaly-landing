@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Protection — SENTINALY</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="description" content="How Sentinaly secures customer data: encryption, isolation, access control and compliance certifications." />
+  <link rel="canonical" href="https://www.sentinaly.com/data-protection.html" />
+  <meta name="robots" content="noindex" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="demo.css" />
+  <link rel="stylesheet" href="legal.css" />
+  <link rel="stylesheet" href="cookies.css" />
+</head>
+<body class="demo-page">
+  <main class="demo">
+    <header class="demo__header legal__header">
+      <a href="index.html" aria-label="Sentinaly home">
+        <img class="demo__logo" src="assets/demo-logo.png" alt="SENTINALY" />
+      </a>
+      <h1 class="demo__title">Data Protection</h1>
+      <p class="legal__updated">Last updated: September 2026</p>
+    </header>
+
+    <div class="demo__card legal__card">
+      <article class="legal">
+        <p class="legal__intro">
+          Regulatory intelligence is built on trust. Sentinaly is designed so that your data is protected at
+          every stage — from creation to storage — using industry-leading security standards. This page
+          describes the technical and organizational measures we apply.
+        </p>
+
+        <section class="legal__section">
+          <h2>End-to-end encryption</h2>
+          <p>
+            All data is encrypted in transit using TLS 1.2 or higher and at rest using AES-256. Encryption keys
+            are managed through a dedicated key-management service with strict rotation and access policies, in
+            line with GDPR Articles 25 and 32 and ISO/IEC 27018.
+          </p>
+        </section>
+
+        <section class="legal__section">
+          <h2>Strict data isolation</h2>
+          <p>
+            Each customer's information is held in a logically isolated environment. Tenant boundaries are
+            enforced at the storage, application and model layers so that data from one organization is never
+            visible to, or used to serve, another.
+          </p>
+        </section>
+
+        <section class="legal__section">
+          <h2>User-controlled access</h2>
+          <p>
+            You decide who can see what. Granular, role-based permissions, single sign-on support and detailed
+            audit logs give administrators full control over access to workspaces, modules and outputs.
+          </p>
+        </section>
+
+        <section class="legal__section">
+          <h2>Certifications and compliance</h2>
+          <ul>
+            <li><strong>SOC 2 Type I and Type II</strong> — independently audited controls for security, availability and confidentiality.</li>
+            <li><strong>ISO 27001</strong> — certified information security management across our infrastructure.</li>
+            <li><strong>GDPR &amp; DIFC Data Protection Law</strong> — privacy-by-design and privacy-by-default across our Services.</li>
+            <li><strong>ISO/IEC 27018</strong> — protection of personal data in public cloud environments.</li>
+          </ul>
+        </section>
+
+        <section class="legal__section">
+          <h2>Data residency and sub-processors</h2>
+          <p>
+            Customer data is hosted on enterprise cloud infrastructure (AWS, Microsoft Azure and Google Cloud)
+            in regions agreed with each customer. A current list of sub-processors and hosting regions is
+            available on request.
+          </p>
+        </section>
+
+        <section class="legal__section">
+          <h2>Incident response</h2>
+          <p>
+            We maintain a documented incident-response process with continuous monitoring, defined escalation
+            paths and customer notification within the timeframes required by applicable law, including the
+            72-hour GDPR breach notification window.
+          </p>
+        </section>
+
+        <section class="legal__section">
+          <h2>Data subject requests and deletion</h2>
+          <p>
+            We support customers in fulfilling data subject requests and delete or return customer data at the
+            end of the contractual relationship, subject to legally required retention. See our
+            <a href="privacy.html">Privacy Policy</a> for details on personal data handling.
+          </p>
+        </section>
+
+        <section class="legal__section legal__contact">
+          <h2>Security enquiries</h2>
+          <p>
+            To request our security documentation, a Data Processing Agreement or to report a vulnerability,
+            contact <a href="mailto:contact@sentinaly.com">contact@sentinaly.com</a>.
+          </p>
+        </section>
+      </article>
+    </div>
+
+    <nav class="legal__nav" aria-label="Legal pages">
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="data-protection.html" aria-current="page">Data Protection</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+
+    <footer class="demo__footer">
+      <img class="demo__footer-wordmark" src="assets/demo-wordmark-footer.svg" alt="SENTINALY" />
+      <span class="demo__footer-copy">© 2026</span>
+    </footer>
+  </main>
+
+  <div
+    class="cookie-banner"
+    id="cookie-banner"
+    role="dialog"
+    aria-labelledby="cookie-banner-title"
+    aria-describedby="cookie-banner-desc"
+    hidden
+  >
+    <button type="button" class="cookie-banner__close" aria-label="Close cookie notice">
+      <span class="cookie-banner__close-icon">
+        <img src="assets/icon-cookie-close.svg" alt="" width="16" height="16" />
+      </span>
+    </button>
+    <div class="cookie-banner__inner">
+      <div class="cookie-banner__top">
+        <h2 class="cookie-banner__title" id="cookie-banner-title">Our website use Cookies</h2>
+        <p class="cookie-banner__desc" id="cookie-banner-desc">
+          We use cookies for analytics and marketing to improve your experience. See our
+          <a href="privacy.html" class="cookie-banner__link">Privacy Policy</a>
+        </p>
+      </div>
+      <div class="cookie-banner__divider" aria-hidden="true"></div>
+      <div class="cookie-banner__actions">
+        <button type="button" class="cookie-banner__btn cookie-banner__btn--decline">Decline</button>
+        <button type="button" class="cookie-banner__btn cookie-banner__btn--accept">Accept all</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="cookies.js"></script>
+</body>
+</html>
