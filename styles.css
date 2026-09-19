@@ -1191,6 +1191,117 @@ a {
   background: #f2f3f5;
 }
 
+/* Subscribe success modal */
+body.is-modal-open {
+  overflow: hidden;
+}
+
+.subscribe-success {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(8, 16, 20, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.subscribe-success[hidden] {
+  display: none;
+}
+
+.subscribe-success__dialog {
+  position: relative;
+  width: min(100%, 420px);
+  background: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
+  padding: 40px 32px 28px;
+  text-align: center;
+  animation: subscribe-success-in 0.28s ease both;
+}
+
+.subscribe-success__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: #514f6e;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.subscribe-success__close:hover {
+  background: rgba(8, 16, 20, 0.06);
+}
+
+.subscribe-success__icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subscribe-success__title {
+  margin: 0 0 10px;
+  font-family: var(--font-neue);
+  font-size: 22px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.subscribe-success__text {
+  margin: 0 0 28px;
+  font-family: var(--font-neue);
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.subscribe-success__done {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 12px;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font-neue);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.subscribe-success__done:hover {
+  opacity: 0.88;
+}
+
+@keyframes subscribe-success-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Footer links */
 .footer__links {
   margin-top: 10px;
@@ -1230,6 +1341,16 @@ a {
   color: var(--muted);
   max-width: 245px;
   margin-bottom: 18px;
+}
+
+.footer__muted a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__muted a:hover {
+  color: var(--ink);
 }
 
 .footer__socials {
@@ -1312,6 +1433,15 @@ a {
   text-align: right;
   white-space: nowrap;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer__powered-logo {
+  width: 240px;
+  height: auto;
+  display: block;
 }
 
 .footer__powered a {
