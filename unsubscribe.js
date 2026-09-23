@@ -5,8 +5,7 @@
   var titleEl = document.getElementById("unsub-title");
   var textEl = document.getElementById("unsub-text");
   var actionBtn = document.getElementById("unsub-action");
-  var homeLink = document.getElementById("unsub-home");
-  if (!card || !titleEl || !textEl || !actionBtn || !homeLink) return;
+  if (!card || !titleEl || !textEl || !actionBtn) return;
 
   var STATES = {
     loading: { title: "One moment", text: "Checking your link…" },
@@ -18,12 +17,10 @@
     done: {
       title: "You're unsubscribed",
       text: "You won't receive future subscription emails from Sentinaly.",
-      link: "Back to Sentinaly",
     },
     invalid: {
       title: "Link unavailable",
       text: "This unsubscribe link is invalid. Please use the link from your most recent email.",
-      link: "Back to Sentinaly",
     },
     error: {
       title: "Please try again",
@@ -44,8 +41,6 @@
     actionBtn.hidden = !copy.button;
     actionBtn.disabled = false;
     if (copy.button) actionBtn.textContent = copy.button;
-    homeLink.hidden = !copy.link;
-    if (copy.link) homeLink.textContent = copy.link;
   }
 
   function url() {
