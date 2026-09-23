@@ -1,0 +1,122 @@
+/* Unsubscribe page — shares the secondary-page shell (demo.css);
+   the card mirrors the newsletter .subscribe-success dialog (styles.css). */
+
+.unsub__header {
+  margin-bottom: 40px;
+}
+
+.unsub__card {
+  width: min(100%, 440px);
+  padding: 48px 40px 36px;
+  border-radius: 24px;
+  text-align: center;
+  animation: unsub-in 0.28s ease both;
+}
+
+.unsub__icon {
+  display: none;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  background: var(--demo-btn);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+}
+
+.unsub__icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.unsub__card[data-state="done"] .unsub__icon {
+  display: flex;
+}
+
+.unsub__title {
+  margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--demo-text);
+}
+
+.unsub__text {
+  margin: 0 auto;
+  max-width: 320px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--demo-muted);
+}
+
+.unsub__actions {
+  margin-top: 28px;
+}
+
+.unsub__card[data-state="loading"] .unsub__actions {
+  display: none;
+}
+
+.unsub__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  height: 48px;
+  padding: 0 22px;
+  border: 1px solid var(--demo-btn);
+  border-radius: 12px;
+  background: var(--demo-btn);
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transition: opacity 0.2s ease;
+}
+
+.unsub__btn:hover {
+  opacity: 0.88;
+}
+
+.unsub__btn:focus-visible {
+  outline: 2px solid var(--demo-ink-soft);
+  outline-offset: 3px;
+}
+
+.unsub__btn[disabled] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.unsub__btn[hidden] {
+  display: none;
+}
+
+@keyframes unsub-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .unsub__card {
+    width: 100%;
+    padding: 36px 24px 28px;
+    border-radius: 16px;
+  }
+
+  .unsub__btn {
+    width: 100%;
+  }
+}

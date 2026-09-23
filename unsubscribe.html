@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unsubscribe — Sentinaly</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <meta name="description" content="Unsubscribe from Sentinaly emails." />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="referrer" content="no-referrer" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="demo.css" />
+  <link rel="stylesheet" href="unsubscribe.css" />
+  <link rel="stylesheet" href="cookies.css" />
+</head>
+<body class="demo-page">
+  <main class="demo unsub">
+    <header class="demo__header unsub__header">
+      <a href="index.html" aria-label="Sentinaly home">
+        <img class="demo__logo" src="assets/demo-logo.png" alt="SENTINALY" />
+      </a>
+    </header>
+
+    <div class="demo__card unsub__card" id="unsub-card" data-state="loading" role="status" aria-live="polite">
+      <span class="unsub__icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <h1 class="unsub__title" id="unsub-title">One moment</h1>
+      <p class="unsub__text" id="unsub-text">Checking your link…</p>
+      <div class="unsub__actions">
+        <button type="button" class="unsub__btn" id="unsub-action" hidden>Confirm unsubscribe</button>
+        <a class="unsub__btn" id="unsub-home" href="/" hidden>Back to Sentinaly</a>
+      </div>
+    </div>
+
+    <footer class="demo__footer">
+      <img class="demo__footer-wordmark" src="assets/demo-wordmark-footer.svg" alt="SENTINALY" />
+      <span class="demo__footer-copy">© 2026</span>
+    </footer>
+  </main>
+
+  <div
+    class="cookie-banner"
+    id="cookie-banner"
+    role="dialog"
+    aria-labelledby="cookie-banner-title"
+    aria-describedby="cookie-banner-desc"
+    hidden
+  >
+    <button type="button" class="cookie-banner__close" aria-label="Close cookie notice">
+      <span class="cookie-banner__close-icon">
+        <img src="assets/icon-cookie-close.svg" alt="" width="16" height="16" />
+      </span>
+    </button>
+    <div class="cookie-banner__inner">
+      <div class="cookie-banner__top">
+        <h2 class="cookie-banner__title" id="cookie-banner-title">Our website use Cookies</h2>
+        <p class="cookie-banner__desc" id="cookie-banner-desc">
+          We use cookies for analytics and marketing to improve your experience. See our
+          <a href="privacy.html" class="cookie-banner__link">Privacy Policy</a>
+        </p>
+      </div>
+      <div class="cookie-banner__divider" aria-hidden="true"></div>
+      <div class="cookie-banner__actions">
+        <button type="button" class="cookie-banner__btn cookie-banner__btn--decline">Decline</button>
+        <button type="button" class="cookie-banner__btn cookie-banner__btn--accept">Accept all</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="unsubscribe.js"></script>
+  <script src="cookies.js"></script>
+</body>
+</html>
