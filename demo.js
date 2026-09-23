@@ -1,4 +1,7 @@
 (function () {
+  const DEMO_URL = 'https://djzpiha4se.execute-api.eu-central-1.amazonaws.com/prod/demo_sentinaly';
+  const DEMO_API_KEY = 'gab5JAzrEd18XjYgtqfxD9OKIb5xpAiA3fnxIqzA';
+
   const selects = Array.from(document.querySelectorAll('.demo-select'));
 
   const closeAll = (except) => {
@@ -112,12 +115,60 @@
         return;
       }
 
-      // TODO: send FormData(form) to the backend / form service here.
-      form.hidden = true;
-      if (success) {
-        success.hidden = false;
-        success.scrollIntoView({ block: 'center', behavior: 'smooth' });
-      }
+      if (form.dataset.sending === '1') return;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const submitLabel = submitBtn ? submitBtn.textContent : '';
+      const errorEl = form.querySelector('.demo-form__error') || (() => {
+        const el = document.createElement('p');
+        el.className = 'demo-form__error';
+        el.setAttribute('role', 'alert');
+        el.style.cssText = 'margin:12px 0 0;color:#d64545;font-size:14px;line-height:1.4;text-align:center;';
+        el.hidden = true;
+        (submitBtn ? submitBtn.parentNode : form).appendChild(el);
+        return el;
+      })();
+      errorEl.hidden = true;
+
+      const data = {};
+      new FormData(form).forEach((value, key) => { data[key] = value; });
+      data.newsletter = !!form.querySelector('[name="newsletter"]:checked');
+      data.terms = !!form.querySelector('[name="terms"]:checked');
+
+      form.dataset.sending = '1';
+      if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Sending\u2026'; }
+
+      const finish = () => {
+        form.dataset.sending = '';
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitLabel; }
+      };
+
+      fetch(DEMO_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': DEMO_API_KEY },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json().then((body) => ({ status: res.status, body })).catch(() => ({ status: res.status, body: {} })))
+        .then(({ status, body }) => {
+          finish();
+          // 502 = request saved but the confirmation email failed; still a success for the visitor.
+          if (status === 200 || status === 502) {
+            form.hidden = true;
+            if (success) {
+              success.hidden = false;
+              success.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            }
+            return;
+          }
+          errorEl.textContent = status === 400 && body && body.error
+            ? 'Please check your details: ' + body.error + '.'
+            : 'Something went wrong. Please try again.';
+          errorEl.hidden = false;
+        })
+        .catch(() => {
+          finish();
+          errorEl.textContent = 'Something went wrong. Please try again.';
+          errorEl.hidden = false;
+        });
     });
   }
 })();
