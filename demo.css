@@ -527,3 +527,10 @@ body.demo-page {
     font-size: 14px;
   }
 }
+
+/* Cloudflare Turnstile widget, sits above the submit button. */
+.demo-turnstile {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 20px;
+}

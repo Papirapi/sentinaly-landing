@@ -129,6 +129,16 @@
       })();
       errorEl.hidden = true;
 
+      // Turnstile drops a cf-turnstile-response token into the form; without it
+      // there is nothing for the Lambda to verify, so do not send.
+      const turnstileToken = form.querySelector('[name="cf-turnstile-response"]');
+      if (!turnstileToken || !turnstileToken.value) {
+        errorEl.textContent = 'Please complete the anti-spam check above the button.';
+        errorEl.hidden = false;
+        if (window.turnstile) window.turnstile.reset();
+        return;
+      }
+
       const data = {};
       new FormData(form).forEach((value, key) => { data[key] = value; });
       data.newsletter = !!form.querySelector('[name="newsletter"]:checked');
@@ -140,6 +150,8 @@
       const finish = () => {
         form.dataset.sending = '';
         if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitLabel; }
+        // Turnstile tokens are single use, so arm a fresh one for the next attempt.
+        if (window.turnstile) window.turnstile.reset();
       };
 
       fetch(DEMO_URL, {
@@ -159,9 +171,15 @@
             }
             return;
           }
-          errorEl.textContent = status === 400 && body && body.error
-            ? 'Please check your details: ' + body.error + '.'
-            : 'Something went wrong. Please try again.';
+          // 403/503 carry the anti-spam check's own wording, which is worth showing.
+          const apiError = body && body.error ? body.error : '';
+          if (status === 400 && apiError) {
+            errorEl.textContent = 'Please check your details: ' + apiError + '.';
+          } else if ((status === 403 || status === 503) && apiError) {
+            errorEl.textContent = apiError;
+          } else {
+            errorEl.textContent = 'Something went wrong. Please try again.';
+          }
           errorEl.hidden = false;
         })
         .catch(() => {
